@@ -182,6 +182,9 @@ class TCPIPInstrSession(Session):
                     flags, block)
 
                 if error == vxi11.ErrorCodes.io_timeout:
+                    import logging
+                    logger = logging.getLogger(__name__)
+                    logger.debug(size)
                     return offset, StatusCode.error_timeout
 
                 elif error or size < len(block):
